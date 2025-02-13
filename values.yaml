@@ -1,0 +1,27 @@
+replicaCount: 1
+
+image:
+  repository: hashicorp/vault
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8200
+
+persistence:
+  enabled: true
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: vault.example.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
